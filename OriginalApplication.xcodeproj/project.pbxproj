@@ -13,6 +13,11 @@
 		EB362C301F30228400A64D56 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB362C2F1F30228400A64D56 /* HistoryViewController.swift */; };
 		EB362C321F30229400A64D56 /* AnalysticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB362C311F30229400A64D56 /* AnalysticViewController.swift */; };
 		EB362C341F30229F00A64D56 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB362C331F30229F00A64D56 /* SettingViewController.swift */; };
+		EB61854B1F3823FE00D3610A /* SettingAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB61854A1F3823FE00D3610A /* SettingAccountViewController.swift */; };
+		EB61854D1F38241500D3610A /* SettingDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB61854C1F38241500D3610A /* SettingDisplayViewController.swift */; };
+		EB61854F1F38242F00D3610A /* SettingBackupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB61854E1F38242F00D3610A /* SettingBackupViewController.swift */; };
+		EB6185551F3840AB00D3610A /* TableViewCellCalculationAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB6185531F3840AB00D3610A /* TableViewCellCalculationAmount.swift */; };
+		EB6185561F3840AB00D3610A /* TableViewCellCalculationAmount.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB6185541F3840AB00D3610A /* TableViewCellCalculationAmount.xib */; };
 		EBA494DB1F3014BC00773417 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA494DA1F3014BC00773417 /* AppDelegate.swift */; };
 		EBA494DD1F3014BC00773417 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBA494DC1F3014BC00773417 /* ViewController.swift */; };
 		EBA494E01F3014BC00773417 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBA494DE1F3014BC00773417 /* Main.storyboard */; };
@@ -51,6 +56,11 @@
 		EB362C2F1F30228400A64D56 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		EB362C311F30229400A64D56 /* AnalysticViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysticViewController.swift; sourceTree = "<group>"; };
 		EB362C331F30229F00A64D56 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		EB61854A1F3823FE00D3610A /* SettingAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingAccountViewController.swift; sourceTree = "<group>"; };
+		EB61854C1F38241500D3610A /* SettingDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingDisplayViewController.swift; sourceTree = "<group>"; };
+		EB61854E1F38242F00D3610A /* SettingBackupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingBackupViewController.swift; sourceTree = "<group>"; };
+		EB6185531F3840AB00D3610A /* TableViewCellCalculationAmount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellCalculationAmount.swift; sourceTree = "<group>"; };
+		EB6185541F3840AB00D3610A /* TableViewCellCalculationAmount.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCellCalculationAmount.xib; sourceTree = "<group>"; };
 		EBA494D71F3014BC00773417 /* OriginalApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OriginalApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBA494DA1F3014BC00773417 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBA494DC1F3014BC00773417 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +124,40 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EB6185501F38244600D3610A /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				EB362C331F30229F00A64D56 /* SettingViewController.swift */,
+				EB61854A1F3823FE00D3610A /* SettingAccountViewController.swift */,
+				EB61854C1F38241500D3610A /* SettingDisplayViewController.swift */,
+				EB61854E1F38242F00D3610A /* SettingBackupViewController.swift */,
+			);
+			name = Setting;
+			sourceTree = "<group>";
+		};
+		EB6185511F383AEA00D3610A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EBB637CB1F34119500179F23 /* ActivityAmount.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		EB6185521F383B3B00D3610A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EB362C2F1F30228400A64D56 /* HistoryViewController.swift */,
+				EB362C311F30229400A64D56 /* AnalysticViewController.swift */,
+				EB362C2D1F30215500A64D56 /* LoginViewController.swift */,
+				EBA494DA1F3014BC00773417 /* AppDelegate.swift */,
+				EBA494DC1F3014BC00773417 /* ViewController.swift */,
+				EB6185531F3840AB00D3610A /* TableViewCellCalculationAmount.swift */,
+				EB6185541F3840AB00D3610A /* TableViewCellCalculationAmount.xib */,
+				EB6185501F38244600D3610A /* Setting */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		EBA494CE1F3014BC00773417 = {
 			isa = PBXGroup;
 			children = (
@@ -139,18 +183,13 @@
 		EBA494D91F3014BC00773417 /* OriginalApplication */ = {
 			isa = PBXGroup;
 			children = (
-				EBA494DA1F3014BC00773417 /* AppDelegate.swift */,
-				EBA494DC1F3014BC00773417 /* ViewController.swift */,
 				EBA494DE1F3014BC00773417 /* Main.storyboard */,
-				EB362C2D1F30215500A64D56 /* LoginViewController.swift */,
-				EB362C2F1F30228400A64D56 /* HistoryViewController.swift */,
-				EB362C311F30229400A64D56 /* AnalysticViewController.swift */,
-				EB362C331F30229F00A64D56 /* SettingViewController.swift */,
 				EBA494E11F3014BC00773417 /* Assets.xcassets */,
 				EBA494E31F3014BC00773417 /* LaunchScreen.storyboard */,
 				604E6C091F357C1800AEF5F5 /* GoogleService-Info.plist */,
 				EBA494E61F3014BC00773417 /* Info.plist */,
-				EBB637CB1F34119500179F23 /* ActivityAmount.swift */,
+				EB6185521F383B3B00D3610A /* Controller */,
+				EB6185511F383AEA00D3610A /* Model */,
 			);
 			path = OriginalApplication;
 			sourceTree = "<group>";
@@ -245,6 +284,11 @@
 					EBA494D61F3014BC00773417 = {
 						CreatedOnToolsVersion = 8.3.3;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					EBA494EA1F3014BC00773417 = {
 						CreatedOnToolsVersion = 8.3.3;
@@ -283,6 +327,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB6185561F3840AB00D3610A /* TableViewCellCalculationAmount.xib in Resources */,
 				EBA494E51F3014BC00773417 /* LaunchScreen.storyboard in Resources */,
 				604E6C0A1F357C1800AEF5F5 /* GoogleService-Info.plist in Resources */,
 				EBA494E21F3014BC00773417 /* Assets.xcassets in Resources */,
@@ -362,8 +407,12 @@
 				EB362C321F30229400A64D56 /* AnalysticViewController.swift in Sources */,
 				EB362C2E1F30215500A64D56 /* LoginViewController.swift in Sources */,
 				EBA494DD1F3014BC00773417 /* ViewController.swift in Sources */,
+				EB61854B1F3823FE00D3610A /* SettingAccountViewController.swift in Sources */,
 				EBA494DB1F3014BC00773417 /* AppDelegate.swift in Sources */,
+				EB61854D1F38241500D3610A /* SettingDisplayViewController.swift in Sources */,
+				EB6185551F3840AB00D3610A /* TableViewCellCalculationAmount.swift in Sources */,
 				EB362C301F30228400A64D56 /* HistoryViewController.swift in Sources */,
+				EB61854F1F38242F00D3610A /* SettingBackupViewController.swift in Sources */,
 				EBB637CC1F34119500179F23 /* ActivityAmount.swift in Sources */,
 				EB362C341F30229F00A64D56 /* SettingViewController.swift in Sources */,
 			);

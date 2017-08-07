@@ -25,7 +25,8 @@ class AnalysticViewController: UIViewController {
         barChartView.drawBarShadowEnabled = false
         barChartView.drawBordersEnabled = true
         barChartView.chartDescription?.text = "京都府の月毎の降水量グラフ"
-        
+        barChartView.tintColor = UIColor.init(colorLiteralRed: 140, green: 0, blue: 204, alpha: 0)
+        barChartView.backgroundColor = UIColor.init(colorLiteralRed: 140, green: 0, blue: 204, alpha: 0)
         setChart(dataPoints: months, values: unitsSold)
     }
     
