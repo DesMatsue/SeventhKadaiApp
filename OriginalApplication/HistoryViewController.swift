@@ -10,15 +10,16 @@ import UIKit
 import AVFoundation
 import RealmSwift
 
-class HistoryViewController: UIViewController {
+class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     // TableView
     @IBOutlet weak var tableView: UITableView!
-//    let nib = UINib(nibName: "TableViewCellCalculationAmount", bundle: nil)
+    let nib = UINib(nibName: "TableViewCellCalculationAmount", bundle: nil)
     // Realmのインスタンス
     let realm = try! Realm()
     // ActivityAmountのコレクション
-//    var activityAmounts = try! Realm().objects(ActivityAmount.self).sorted(byKeyPath: "date", ascending: false)
-//    let formatter = DateFormatter()
+    var activityAmounts = try! Realm().objects(ActivityAmount.self).sorted(byKeyPath: "date", ascending: false).sorted(byKeyPath: "date", ascending: false)
+    let formatter = DateFormatter()
+    var sectionArray:[String] = []
     
     // タイマー用の時間のための変数
     var timer_sec: Float = 0
@@ -30,44 +31,48 @@ class HistoryViewController: UIViewController {
      */
     override func viewDidLoad() {
         super.viewDidLoad()
-//        tableView.dataSource = self
-//        tableView.register(nib,forCellReuseIdentifier: "Cell")
-//        tableView.rowHeight = UITableViewAutomaticDimension
-//        formatter.dateFormat = "yyyy/MM/dd"
-        
-//        Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(recordAmount), userInfo: nil, repeats: true)
-
+        tableView.dataSource = self
+        // テーブルセルのタップを無効にする
+        tableView.allowsSelection = false
+        tableView.register(nib,forCellReuseIdentifier: "Cell")
+        tableView.rowHeight = UITableViewAutomaticDimension
+        formatter.dateFormat = "yyyyMMddhhmmss"
+        generateSectionQue()
         // Do any additional setup after loading the view.
-/*
         do{
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: .mixWithOthers)
-            print("category play")
             do{
                 try AVAudioSession.sharedInstance().setActive(true)
-                print("I'm alive ...?")
+                Timer.scheduledTimer(timeInterval: 60.0, target: self, selector: #selector(recordAmount), userInfo: nil, repeats: true)
             }
         }catch{
             print("Error !")
         }
     }
-    // 活動量を蓄積
+    // 活動量を蓄積(今回は起動後の時間で代用します。)
     func recordAmount(timer: Timer) {
-        self.timer_sec += 0.1
-        print("只今：\(timer_sec)")
+        self.timer_sec += 1.0
         
         let activityAmouint = ActivityAmount()
-        activityAmouint.activityAmount = Double(timer_sec)
-        realm.add(activityAmouint,update: true)
-*/
- }
-
+        if activityAmounts.count != 0{
+            activityAmouint.id = activityAmounts.max(ofProperty: "id")! + 1
+        }
+        // 保存
+        try! realm.write {
+            formatter.dateFormat = "yyyyMMddhhmmss"
+            activityAmouint.date = formatter.string(from: Date())
+            activityAmouint.activityAmount = Double(timer_sec)
+            realm.add(activityAmouint)
+        }
+        tableView.reloadData()
+    }
     
     /* 再表示部
      *
      *
      */
     override func viewDidAppear(_ animated: Bool) {
-//        tableView.reloadData()
+        tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -78,8 +83,13 @@ class HistoryViewController: UIViewController {
     /* Delegate : TableView
      *
      *
- 
- 
+    */
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionArray[section]
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sectionArray.count
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.activityAmounts.count
     }
@@ -89,12 +99,10 @@ class HistoryViewController: UIViewController {
         cell.setData("\(activityAmount.date)", "\(activityAmount.activityAmount)")
         return cell
     }
-    func tableView(_ tableView: UITableView, estimatedHeight__forRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        // Auto Layoutを使ってセルの高さを動的に変更する
         return UITableViewAutomaticDimension
     }
-     
-     */
-
     /*
     // MARK: - Navigation
 
@@ -104,5 +112,15 @@ class HistoryViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    // Generate TableView Section Array
+    func generateSectionQue(){
+        for date in self.activityAmounts{
+            if let year = Int(date.date.substring(to: date.date.index(date.date.startIndex, offsetBy:4))){
+                if let date = Int(date.date.substring(with: date.date.index(date.date.startIndex,offsetBy: 4)..<date.date.index(date.date.endIndex,offsetBy:-8))){
+                    self.sectionArray.append("\(year)月\(date)月")
+                }
+            }
+        }
+    }
 }

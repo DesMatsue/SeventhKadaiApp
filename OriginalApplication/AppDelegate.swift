@@ -8,12 +8,23 @@
 
 import UIKit
 import Firebase
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    // Storyboardの読み込み
+    var window: UIWindow?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FIRApp.configure()
+        
+        // データベースのmigration
+        let config = Realm.Configuration(schemaVersion: 3,
+                                         migrationBlock: {migration, oldSchemaVersion in
+                                            if(oldSchemaVersion < 3){}
+        })
+        Realm.Configuration.defaultConfiguration = config
         return true
     }
 

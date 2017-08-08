@@ -10,12 +10,12 @@ import RealmSwift
 
 class ActivityAmount: Object{
     // 管理用ID
-    dynamic var date = NSDate()
-    
+    dynamic var id = 0
+    dynamic var date = ""
     // 実データフィールド
     dynamic var activityAmount: Double = 0
 
     override static func primaryKey() -> String?{
-        return "date"
+        return "id"
     }
 }

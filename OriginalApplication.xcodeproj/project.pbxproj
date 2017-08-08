@@ -146,11 +146,11 @@
 		EB6185521F383B3B00D3610A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				EBA494DC1F3014BC00773417 /* ViewController.swift */,
 				EB362C2F1F30228400A64D56 /* HistoryViewController.swift */,
 				EB362C311F30229400A64D56 /* AnalysticViewController.swift */,
 				EB362C2D1F30215500A64D56 /* LoginViewController.swift */,
 				EBA494DA1F3014BC00773417 /* AppDelegate.swift */,
-				EBA494DC1F3014BC00773417 /* ViewController.swift */,
 				EB6185531F3840AB00D3610A /* TableViewCellCalculationAmount.swift */,
 				EB6185541F3840AB00D3610A /* TableViewCellCalculationAmount.xib */,
 				EB6185501F38244600D3610A /* Setting */,
