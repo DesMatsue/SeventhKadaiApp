@@ -9,6 +9,10 @@
 import UIKit
 
 class SettingBackupViewController: UIViewController {
+    // backup realm
+    @IBAction func buttonBackUp(_ sender: Any) {
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

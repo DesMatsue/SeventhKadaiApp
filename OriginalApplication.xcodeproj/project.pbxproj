@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		16B240E269F10708B22F5B67 /* Pods_OriginalApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 553B96C6C2E4F5C00A30598D /* Pods_OriginalApplication.framework */; };
 		604E6C0A1F357C1800AEF5F5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 604E6C091F357C1800AEF5F5 /* GoogleService-Info.plist */; };
+		EB29B1F81F3AD9A30025FB36 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB29B1F71F3AD9A30025FB36 /* UserSettings.swift */; };
+		EB29B1FB1F3AF4710025FB36 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB29B1FA1F3AF4710025FB36 /* Constant.swift */; };
 		EB362C2E1F30215500A64D56 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB362C2D1F30215500A64D56 /* LoginViewController.swift */; };
 		EB362C301F30228400A64D56 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB362C2F1F30228400A64D56 /* HistoryViewController.swift */; };
 		EB362C321F30229400A64D56 /* AnalysticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB362C311F30229400A64D56 /* AnalysticViewController.swift */; };
@@ -52,6 +54,8 @@
 		895A0048F7FF83A60122E9CE /* Pods-OriginalApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OriginalApplication.release.xcconfig"; path = "Pods/Target Support Files/Pods-OriginalApplication/Pods-OriginalApplication.release.xcconfig"; sourceTree = "<group>"; };
 		E7C22ACE8917719B869F29F6 /* Pods_OriginalApplicationUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OriginalApplicationUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8E1794C7D54A19EBD4F7F50 /* Pods_OriginalApplicationTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OriginalApplicationTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB29B1F71F3AD9A30025FB36 /* UserSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		EB29B1FA1F3AF4710025FB36 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		EB362C2D1F30215500A64D56 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EB362C2F1F30228400A64D56 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		EB362C311F30229400A64D56 /* AnalysticViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalysticViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +128,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EB29B1F91F3AF4460025FB36 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				EB29B1FA1F3AF4710025FB36 /* Constant.swift */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		EB6185501F38244600D3610A /* Setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				EBB637CB1F34119500179F23 /* ActivityAmount.swift */,
+				EB29B1F71F3AD9A30025FB36 /* UserSettings.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -183,6 +196,7 @@
 		EBA494D91F3014BC00773417 /* OriginalApplication */ = {
 			isa = PBXGroup;
 			children = (
+				EB29B1F91F3AF4460025FB36 /* Resources */,
 				EBA494DE1F3014BC00773417 /* Main.storyboard */,
 				EBA494E11F3014BC00773417 /* Assets.xcassets */,
 				EBA494E31F3014BC00773417 /* LaunchScreen.storyboard */,
@@ -405,6 +419,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB362C321F30229400A64D56 /* AnalysticViewController.swift in Sources */,
+				EB29B1F81F3AD9A30025FB36 /* UserSettings.swift in Sources */,
 				EB362C2E1F30215500A64D56 /* LoginViewController.swift in Sources */,
 				EBA494DD1F3014BC00773417 /* ViewController.swift in Sources */,
 				EB61854B1F3823FE00D3610A /* SettingAccountViewController.swift in Sources */,
@@ -412,6 +427,7 @@
 				EB61854D1F38241500D3610A /* SettingDisplayViewController.swift in Sources */,
 				EB6185551F3840AB00D3610A /* TableViewCellCalculationAmount.swift in Sources */,
 				EB362C301F30228400A64D56 /* HistoryViewController.swift in Sources */,
+				EB29B1FB1F3AF4710025FB36 /* Constant.swift in Sources */,
 				EB61854F1F38242F00D3610A /* SettingBackupViewController.swift in Sources */,
 				EBB637CC1F34119500179F23 /* ActivityAmount.swift in Sources */,
 				EB362C341F30229F00A64D56 /* SettingViewController.swift in Sources */,

@@ -8,11 +8,14 @@
 
 import UIKit
 import Charts
+import RealmSwift
 
 class AnalysticViewController: UIViewController {
     @IBOutlet weak var barChartView: BarChartView!
-
+    var activityAmounts = try! Realm().objects(ActivityAmount.self).sorted(byKeyPath: "date", ascending: false).sorted(byKeyPath: "date", ascending: false)
     var months: [String]!
+    let userDefaults = UserDefaults.standard
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,9 +27,7 @@ class AnalysticViewController: UIViewController {
         barChartView.pinchZoomEnabled = false
         barChartView.drawBarShadowEnabled = false
         barChartView.drawBordersEnabled = true
-        barChartView.chartDescription?.text = "京都府の月毎の降水量グラフ"
-        barChartView.tintColor = UIColor.init(colorLiteralRed: 140, green: 0, blue: 204, alpha: 0)
-        barChartView.backgroundColor = UIColor.init(colorLiteralRed: 140, green: 0, blue: 204, alpha: 0)
+        barChartView.chartDescription?.text = ""
         setChart(dataPoints: months, values: unitsSold)
     }
     
@@ -44,7 +45,21 @@ class AnalysticViewController: UIViewController {
             dataEntries.append(dataEntry)
         }
         
-        let chartDataSet = BarChartDataSet(values: dataEntries, label: "降水量")
+        let chartDataSet = BarChartDataSet(values: dataEntries, label: "起動時間")
+        // colorCode from UserDefault
+        if let storedData = userDefaults.object(forKey: "data") as? Data{
+            if let unarchivedData = NSKeyedUnarchiver.unarchiveObject(with: storedData) as? UserSettings{
+                if let color = unarchivedData.color{
+                    chartDataSet.colors = [color]
+                }else{
+                    chartDataSet.colors = [UserSettings().color!]
+                }
+            }else{
+                chartDataSet.colors = [UserSettings().color!]
+            }
+        }else{
+            chartDataSet.colors = [UserSettings().color!]
+        }
         let chartData = BarChartData(dataSet: chartDataSet)
         barChartView.data = chartData  
     }

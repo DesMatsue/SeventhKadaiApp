@@ -19,7 +19,9 @@ class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDat
     // ActivityAmountのコレクション
     var activityAmounts = try! Realm().objects(ActivityAmount.self).sorted(byKeyPath: "date", ascending: false).sorted(byKeyPath: "date", ascending: false)
     let formatter = DateFormatter()
+    // TableView表示用データ
     var sectionArray:[String] = []
+    var sectioDataArray:[[ActivityAmount]] = [[]]
     
     // タイマー用の時間のための変数
     var timer_sec: Float = 0
@@ -33,7 +35,7 @@ class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDat
         super.viewDidLoad()
         tableView.dataSource = self
         // テーブルセルのタップを無効にする
-        tableView.allowsSelection = false
+        //ableView.allowsSelection = false
         tableView.register(nib,forCellReuseIdentifier: "Cell")
         tableView.rowHeight = UITableViewAutomaticDimension
         formatter.dateFormat = "yyyyMMddhhmmss"
@@ -87,12 +89,15 @@ class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDat
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return sectionArray[section]
     }
+    // number of section in TableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return sectionArray.count
     }
+    // number of section row in TableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.activityAmounts.count
+        return self.sectioDataArray[section].count
     }
+    // cell Data of TableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath as IndexPath) as! TableViewCellCalculationAmount
         let activityAmount = self.activityAmounts[indexPath.row]
@@ -116,9 +121,16 @@ class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDat
     // Generate TableView Section Array
     func generateSectionQue(){
         for date in self.activityAmounts{
+            let activityAmount = date
             if let year = Int(date.date.substring(to: date.date.index(date.date.startIndex, offsetBy:4))){
                 if let date = Int(date.date.substring(with: date.date.index(date.date.startIndex,offsetBy: 4)..<date.date.index(date.date.endIndex,offsetBy:-8))){
-                    self.sectionArray.append("\(year)月\(date)月")
+                    if let index = sectionArray.index(of: "\(year)月\(date)月"){
+                        sectioDataArray[index].append(activityAmount)
+                    }else{
+                        let newAmountData = [activityAmount]
+                        self.sectioDataArray.append(newAmountData)
+                        self.sectionArray.append("\(year)月\(date)月")
+                    }
                 }
             }
         }
