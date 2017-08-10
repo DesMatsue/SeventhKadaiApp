@@ -45,7 +45,7 @@ class HistoryViewController: UIViewController,UITableViewDelegate,UITableViewDat
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: .mixWithOthers)
             do{
                 try AVAudioSession.sharedInstance().setActive(true)
-                Timer.scheduledTimer(timeInterval: 60.0, target: self, selector: #selector(recordAmount), userInfo: nil, repeats: true)
+                Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(recordAmount), userInfo: nil, repeats: true)
             }
         }catch{
             print("Error !")
